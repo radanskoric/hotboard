@@ -1,0 +1,5 @@
+<%= turbo_stream.append :tickets do %>
+  <%= render @ticket %>
+<% end %>
+<%= turbo_stream.update :new_ticket, "" %>
+<%= turbo_stream.prepend :page_content, partial: "notice", locals: { notice: @notice } %>
