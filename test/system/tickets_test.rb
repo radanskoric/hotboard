@@ -10,6 +10,11 @@ class TicketsTest < ApplicationSystemTestCase
     assert_selector "h1", text: "Tickets"
   end
 
+  test "visiting the home page" do
+    visit root_url
+    assert_selector "h1", text: "Tickets"
+  end
+
   test "should create ticket" do
     visit tickets_url
     click_on "New ticket"
