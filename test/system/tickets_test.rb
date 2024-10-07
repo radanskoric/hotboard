@@ -28,16 +28,20 @@ class TicketsTest < ApplicationSystemTestCase
   end
 
   test "should update Ticket" do
-    skip "The change to Turbo was only partially implemented in this commit, will be completed in the next commit."
-    visit ticket_url(@ticket)
-    click_on "Edit this ticket", match: :first
+    visit tickets_url
+    within "turbo-frame##{dom_id(@ticket)}" do
+      click_on "Edit this ticket"
 
-    fill_in "Description", with: @ticket.description
-    fill_in "Title", with: @ticket.title
-    click_on "Update Ticket"
+      fill_in "Description", with: "New ticket description"
+      fill_in "Title", with: "New ticket title"
+      click_on "Update Ticket"
+    end
 
-    assert_text "Ticket was successfully updated"
-    click_on "Back"
+    assert_text "New ticket title"
+    assert_no_text @ticket.title
+
+    # Doesn't work by default. Try and fix it as an exercise after learning about Turbo Streams.
+    # assert_text "Ticket was successfully updated"
   end
 
   test "should destroy Ticket" do
