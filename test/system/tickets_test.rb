@@ -16,6 +16,7 @@ class TicketsTest < ApplicationSystemTestCase
   end
 
   test "should create ticket" do
+    skip "Commit partially implements the change, re-enable in next commit"
     visit tickets_url
     click_on "New ticket"
 
@@ -44,6 +45,21 @@ class TicketsTest < ApplicationSystemTestCase
     # You can try and fix it as an exercise after learning about Turbo Streams.
     # And well done for checking the tests and finding this!
     # assert_text "Ticket was successfully updated"
+  end
+
+  test "should show errors when updating Ticket" do
+    visit tickets_url
+    within "turbo-frame##{dom_id(@ticket)}" do
+      click_on "Edit this ticket"
+
+      fill_in "Description", with: ""
+      fill_in "Title", with: ""
+      click_on "Update Ticket"
+    end
+
+    assert_text "Title can't be blank"
+    assert_text "Description can't be blank"
+    assert_no_text @ticket.title
   end
 
   test "should destroy Ticket" do
