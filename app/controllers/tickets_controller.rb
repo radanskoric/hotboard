@@ -4,6 +4,7 @@ class TicketsController < ApplicationController
   # GET /tickets
   def index
     @tickets = Ticket.all
+    @new_ticket = Ticket.new
   end
 
   # GET /tickets/1
