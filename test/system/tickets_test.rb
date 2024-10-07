@@ -48,8 +48,11 @@ class TicketsTest < ApplicationSystemTestCase
 
   test "should destroy Ticket" do
     visit ticket_url(@ticket)
-    click_on "Destroy this ticket", match: :first
+    within "turbo-frame#ticket_#{@ticket.id}" do
+      click_on "Destroy this ticket"
+    end
 
     assert_text "Ticket was successfully destroyed"
+    assert_no_text @ticket.title
   end
 end
