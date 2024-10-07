@@ -13,9 +13,6 @@
   <div id="tickets" class="min-w-full">
     <% @tickets.each do |ticket| %>
       <%= render ticket %>
-      <p>
-        <%= link_to "Show this ticket", ticket, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-      </p>
     <% end %>
   </div>
 </div>
