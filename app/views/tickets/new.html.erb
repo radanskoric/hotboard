@@ -1,7 +1,9 @@
 <div class="mx-auto md:w-2/3 w-full">
   <h1 class="font-bold text-4xl">New ticket</h1>
 
-  <%= render "form", ticket: @ticket %>
+  <%= turbo_frame_tag @ticket do %>
+    <%= render "form", ticket: @ticket %>
+  <% end %>
 
   <%= link_to "Back to tickets", tickets_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
 </div>
