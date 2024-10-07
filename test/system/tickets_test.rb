@@ -16,16 +16,15 @@ class TicketsTest < ApplicationSystemTestCase
   end
 
   test "should create ticket" do
-    skip "Commit partially implements the change, re-enable in next commit"
     visit tickets_url
     click_on "New ticket"
 
-    fill_in "Description", with: @ticket.description
-    fill_in "Title", with: @ticket.title
+    fill_in "Description", with: "New ticket description"
+    fill_in "Title", with: "New ticket title"
     click_on "Create Ticket"
 
+    assert_text "New ticket title"
     assert_text "Ticket was successfully created"
-    click_on "Back"
   end
 
   test "should update Ticket" do

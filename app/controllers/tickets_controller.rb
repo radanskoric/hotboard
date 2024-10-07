@@ -25,7 +25,11 @@ class TicketsController < ApplicationController
     @ticket = Ticket.new(ticket_params)
 
     if @ticket.save
-      redirect_to @ticket, notice: "Ticket was successfully created."
+      @notice = "Ticket was successfully created."
+      respond_to do |format|
+        format.turbo_stream
+        format.html { redirect_to @ticket, notice: @notice }
+      end
     else
       render :new, status: :unprocessable_entity
     end
