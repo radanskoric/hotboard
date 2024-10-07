@@ -1,12 +1,14 @@
-<div id="<%= dom_id ticket %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Title:</strong>
-    <%= ticket.title %>
-  </p>
+<%= turbo_frame_tag ticket do %>
+  <div id="<%= dom_id ticket, :wrapper %>">
+    <p class="my-5">
+      <strong class="block font-medium mb-1">Title:</strong>
+      <%= ticket.title %>
+    </p>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Description:</strong>
-    <%= ticket.description %>
-  </p>
+    <p class="my-5">
+      <strong class="block font-medium mb-1">Description:</strong>
+      <%= ticket.description %>
+    </p>
 
-</div>
+  </div>
+<% end %>
