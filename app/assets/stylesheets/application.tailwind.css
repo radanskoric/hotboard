@@ -11,3 +11,9 @@
 }
 
 */
+
+@layer components {
+  .ticket-card {
+    @apply bg-white p-4 mb-3 shadow-md border border-gray-100 rounded-md;
+  }
+}
