@@ -13,7 +13,7 @@ class TicketsController < ApplicationController
 
   # GET /tickets/new
   def new
-    @ticket = Ticket.new
+    @ticket = Ticket.new(state: params[:state])
   end
 
   # GET /tickets/1/edit
@@ -63,6 +63,6 @@ class TicketsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def ticket_params
-      params.expect(ticket: [ :title, :description ])
+      params.require(:ticket).permit(:title, :description, :state)
     end
 end
