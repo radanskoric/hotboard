@@ -8,6 +8,10 @@ export default class extends Controller {
     element.addEventListener("drop", this.drop)
   }
 
+  start(_event) {
+    console.log("Started dragging")
+  }
+
   drop = () => {
     console.log("DROPPED") // We'll implement this later.
   }
