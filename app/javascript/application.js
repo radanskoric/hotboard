@@ -5,3 +5,7 @@ import "controllers"
 Turbo.StreamActions.log = function () {
   console.log(this.getAttribute("message"))
 }
+
+addEventListener("turbo:render", (event) => {
+  console.log("Turbo Rendered with: ", event.detail.renderMethod);
+})
