@@ -1,5 +1,5 @@
 <%= turbo_frame_tag ticket do %>
-  <div id="<%= dom_id ticket, :wrapper %>">
+  <div id="<%= dom_id ticket, :wrapper %>" class="ticket-card">
     <p class="my-5">
       <strong class="block font-medium mb-1">Title:</strong>
       <%= ticket.title %>
