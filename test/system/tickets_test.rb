@@ -19,7 +19,7 @@ class TicketsTest < ApplicationSystemTestCase
 
   test "should create ticket" do
     visit tickets_url
-    click_on "New ticket"
+    click_on("New ticket", match: :first)
 
     fill_in "Description", with: "New ticket description"
     fill_in "Title", with: "New ticket title"
@@ -31,7 +31,7 @@ class TicketsTest < ApplicationSystemTestCase
 
   test "should allow canceling new ticket creation" do
     visit root_url
-    click_on "New ticket"
+    click_on("New ticket", match: :first)
 
     fill_in "Title", with: "New ticket title"
     click_on "Cancel"
@@ -66,7 +66,7 @@ class TicketsTest < ApplicationSystemTestCase
       fill_in "Title", with: "Updated ticket title"
     end
 
-    click_on "New ticket"
+    click_on("New ticket", match: :first)
     within "turbo-frame#new_ticket" do
       fill_in "Description", with: "New ticket description"
       fill_in "Title", with: "New ticket title"
