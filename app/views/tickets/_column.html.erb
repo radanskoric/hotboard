@@ -9,6 +9,11 @@
           bg-white border-b border-gray-300 rounded-t-md"
   >
     <h2 class="font-bold text-xl"><%= state.humanize %> (<%= tickets.size %>)</h2>
+    <%= link_to "New ticket",
+        new_ticket_path,
+        data: {turbo_frame: dom_id(@new_ticket)},
+        class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium"
+    %>
   </div>
 
   <div id="tickets" class="p-4 text-sm">
