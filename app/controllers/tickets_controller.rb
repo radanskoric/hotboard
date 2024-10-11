@@ -47,7 +47,7 @@ class TicketsController < ApplicationController
   # DELETE /tickets/1
   def destroy
     @ticket.destroy!
-    redirect_to tickets_path, notice: "Ticket was successfully destroyed.", status: :see_other
+    redirect_to root_path, notice: "Ticket was successfully destroyed.", status: :see_other
   end
 
   private
