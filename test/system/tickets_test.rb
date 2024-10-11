@@ -19,11 +19,14 @@ class TicketsTest < ApplicationSystemTestCase
 
   test "should create ticket" do
     visit tickets_url
-    click_on "New ticket", match: :first
 
-    fill_in "Description", with: "New ticket description"
-    fill_in "Title", with: "New ticket title"
-    click_on "Create Ticket"
+    within "[data-ticket-state='next']" do
+      click_on "New ticket"
+
+      fill_in "Description", with: "New ticket description"
+      fill_in "Title", with: "New ticket title"
+      click_on "Create Ticket"
+    end
 
     assert_text "New ticket title"
     assert_text "Ticket was successfully created"
@@ -32,11 +35,14 @@ class TicketsTest < ApplicationSystemTestCase
 
   test "should show errors when creating ticket" do
     visit tickets_url
-    click_on "New ticket", match: :first
 
-    fill_in "Description", with: ""
-    fill_in "Title", with: ""
-    click_on "Create Ticket"
+    within "[data-ticket-state='next']" do
+      click_on "New ticket"
+
+      fill_in "Description", with: ""
+      fill_in "Title", with: ""
+      click_on "Create Ticket"
+    end
 
     assert_text "Title can't be blank"
     assert_text "Description can't be blank"
@@ -44,10 +50,13 @@ class TicketsTest < ApplicationSystemTestCase
 
   test "should allow canceling new ticket creation" do
     visit root_url
-    click_on "New ticket", match: :first
 
-    fill_in "Title", with: "New ticket title"
-    click_on "Cancel"
+    within "[data-ticket-state='next']" do
+      click_on "New ticket"
+
+      fill_in "Title", with: "New ticket title"
+      click_on "Cancel"
+    end
 
     assert_no_text "New ticket title"
     assert_no_text "Ticket was successfully created"
@@ -94,13 +103,15 @@ class TicketsTest < ApplicationSystemTestCase
       fill_in "Title", with: "Updated ticket title"
     end
 
-    click_on "New ticket", match: :first
-    within "turbo-frame#new_ticket" do
-      fill_in "Description", with: "New ticket description"
-      fill_in "Title", with: "New ticket title"
-      click_on "Create Ticket"
+    within "[data-ticket-state='next']" do
+      click_on "New ticket"
+      within "turbo-frame#new_ticket_with_state_next" do
+        fill_in "Description", with: "New ticket description"
+        fill_in "Title", with: "New ticket title"
+        click_on "Create Ticket"
+      end
+      assert_text "New ticket title"
     end
-    assert_text "New ticket title"
 
     within "turbo-frame##{dom_id(@ticket)}" do
       click_on "Update Ticket"
@@ -146,8 +157,8 @@ class TicketsTest < ApplicationSystemTestCase
     visit root_url
 
     new_title = "New ticket title"
-    click_on "New ticket", match: :first
-    within "turbo-frame#new_ticket" do
+    within "[data-ticket-state='next']" do
+      click_on "New ticket"
       fill_in "Description", with: "New ticket description"
     end
 
@@ -155,8 +166,8 @@ class TicketsTest < ApplicationSystemTestCase
     perform_enqueued_jobs do
       Capybara.using_session("other user") do
         visit root_url
-        click_on "New ticket", match: :first
-        within "turbo-frame#new_ticket" do
+        within "[data-ticket-state='next']" do
+          click_on "New ticket"
           fill_in "Description", with: "New other ticket description"
           fill_in "Title", with: new_other_title
           click_on "Create Ticket"
@@ -166,7 +177,7 @@ class TicketsTest < ApplicationSystemTestCase
       assert_text new_other_title
     end
 
-    within "turbo-frame#new_ticket" do
+    within "[data-ticket-state='next']" do
       fill_in "Title", with: new_title
       click_on "Create Ticket"
     end
