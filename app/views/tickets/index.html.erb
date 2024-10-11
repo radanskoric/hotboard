@@ -1,3 +1,5 @@
+<%= turbo_stream_from "main-board" %>
+
 <div class="w-full" id="page_content">
   <%= render "notice"%>
 
@@ -10,7 +12,7 @@
     %>
   </div>
 
-  <%= turbo_frame_tag @new_ticket %>
+  <%= turbo_frame_tag @new_ticket, data: { turbo_prevent_morph: true } %>
 
   <div id="tickets" class="min-w-full">
     <% @tickets.each do |ticket| %>

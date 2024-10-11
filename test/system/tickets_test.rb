@@ -1,6 +1,8 @@
 require "application_system_test_case"
 
 class TicketsTest < ApplicationSystemTestCase
+  include ActiveJob::TestHelper
+
   setup do
     @ticket = tickets(:one)
   end
@@ -105,5 +107,58 @@ class TicketsTest < ApplicationSystemTestCase
 
     assert_text "Ticket was successfully destroyed"
     assert_no_text @ticket.title
+  end
+
+  test "reflects changes that another user made" do
+    visit root_url
+
+    new_title = "Updated ticket title"
+
+    Capybara.using_session("other user") do
+      visit root_url
+      assert_no_text new_title
+    end
+
+    click_on "Edit this ticket", match: :first
+    fill_in "Title", with: new_title
+
+    perform_enqueued_jobs do
+      click_on "Update Ticket"
+
+      Capybara.using_session("other user") do
+        assert_text new_title
+      end
+    end
+  end
+
+  test "allows adding a new ticket while another user makes changes" do
+    visit root_url
+
+    new_title = "New ticket title"
+    click_on "New ticket"
+    within "turbo-frame#new_ticket" do
+      fill_in "Description", with: "New ticket description"
+    end
+
+    new_other_title = "New other ticket title"
+    perform_enqueued_jobs do
+      Capybara.using_session("other user") do
+        visit root_url
+        click_on "New ticket"
+        within "turbo-frame#new_ticket" do
+          fill_in "Description", with: "New other ticket description"
+          fill_in "Title", with: new_other_title
+          click_on "Create Ticket"
+        end
+      end
+
+      assert_text new_other_title
+    end
+
+    within "turbo-frame#new_ticket" do
+      fill_in "Title", with: new_title
+      click_on "Create Ticket"
+    end
+    assert_text new_title
   end
 end
