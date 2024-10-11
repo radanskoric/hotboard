@@ -1,5 +1,5 @@
 class TicketsController < ApplicationController
-  before_action :set_ticket, only: %i[ show edit update destroy ]
+  before_action :set_ticket, only: %i[ show edit update update_state destroy ]
 
   # GET /tickets
   def index
@@ -42,6 +42,11 @@ class TicketsController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def update_state
+    @ticket.update(state: params.require(:state))
+    redirect_back_or_to root_path
   end
 
   # DELETE /tickets/1
