@@ -9,3 +9,9 @@ Turbo.StreamActions.log = function () {
 addEventListener("turbo:render", (event) => {
   console.log("Turbo Rendered with: ", event.detail.renderMethod);
 })
+
+addEventListener("turbo:before-morph-element", (event) => {
+  if (event.target.hasAttribute("data-turbo-prevent-morph")) {
+    event.preventDefault();
+  }
+})
