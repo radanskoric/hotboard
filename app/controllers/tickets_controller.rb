@@ -3,7 +3,7 @@ class TicketsController < ApplicationController
 
   # GET /tickets
   def index
-    @tickets = Ticket.all
+    @tickets = Ticket.all.group_by(&:state)
     @ticket = Ticket.new
   end
 
