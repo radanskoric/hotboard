@@ -12,9 +12,9 @@
 
   <%= turbo_frame_tag @new_ticket %>
 
-  <div id="tickets" class="min-w-full">
-    <% @tickets.each do |ticket| %>
-      <%= render ticket %>
+  <div class="flex flex-grow space-x-4 overflow-x-auto">
+    <% Ticket.states.keys.each do |state| %>
+      <%= render "column", state:, tickets: @tickets.fetch(state, []) %>
     <% end %>
   </div>
 </div>
