@@ -1,5 +1,10 @@
 <%= turbo_frame_tag ticket do %>
-  <div id="<%= dom_id ticket, :wrapper %>" class="ticket-card">
+  <div
+    id="<%= dom_id ticket, :wrapper %>"
+    class="ticket-card"
+    draggable="true"
+    data-drag-target="draggable"
+  >
     <p class="my-5">
       <strong class="block font-medium mb-1">Title:</strong>
       <%= ticket.title %>
