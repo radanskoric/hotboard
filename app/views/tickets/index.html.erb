@@ -14,7 +14,7 @@
 
   <%= turbo_frame_tag @ticket %>
 
-  <div class="flex flex-grow space-x-4 overflow-x-auto">
+  <div class="flex flex-grow space-x-4 overflow-x-auto" data-controller="drag">
     <% Ticket.states.keys.each do |state| %>
       <%= render "column", state:, tickets: @tickets.fetch(state, []) %>
     <% end %>
