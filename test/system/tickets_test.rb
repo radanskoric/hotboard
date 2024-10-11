@@ -29,6 +29,17 @@ class TicketsTest < ApplicationSystemTestCase
     assert_text "Ticket was successfully created"
   end
 
+  test "should allow canceling new ticket creation" do
+    visit root_url
+    click_on "New ticket"
+
+    fill_in "Title", with: "New ticket title"
+    click_on "Cancel"
+
+    assert_no_text "New ticket title"
+    assert_no_text "Ticket was successfully created"
+  end
+
   test "should update Ticket" do
     visit tickets_url
     within "turbo-frame##{dom_id(@ticket)}" do
