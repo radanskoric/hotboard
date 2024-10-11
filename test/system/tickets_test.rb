@@ -44,6 +44,29 @@ class TicketsTest < ApplicationSystemTestCase
     # assert_text "Ticket was successfully updated"
   end
 
+  test "should allow updating the ticket while adding a new ticket" do
+    visit root_url
+    within "turbo-frame##{dom_id(@ticket)}" do
+      click_on "Edit this ticket"
+      fill_in "Title", with: "Updated ticket title"
+    end
+
+    click_on "New ticket"
+    within "turbo-frame#new_ticket" do
+      fill_in "Description", with: "New ticket description"
+      fill_in "Title", with: "New ticket title"
+      click_on "Create Ticket"
+    end
+    assert_text "New ticket title"
+
+    within "turbo-frame##{dom_id(@ticket)}" do
+      click_on "Update Ticket"
+    end
+
+    assert_text "Updated ticket title"
+    assert_no_text @ticket.title
+  end
+
   test "should destroy Ticket" do
     visit ticket_url(@ticket)
     within "turbo-frame#ticket_#{@ticket.id}" do
