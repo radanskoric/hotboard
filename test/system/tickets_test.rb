@@ -25,6 +25,7 @@ class TicketsTest < ApplicationSystemTestCase
 
     assert_text "New ticket title"
     assert_text "Ticket was successfully created"
+    assert_no_button "Create Ticket"
   end
 
   test "should show errors when creating ticket" do
