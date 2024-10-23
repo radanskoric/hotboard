@@ -101,6 +101,8 @@ GEM
     debug (1.11.1)
       irb (~> 1.10)
       reline (>= 0.3.8)
+    dockerfile-rails (1.7.10)
+      rails (>= 3.0.0)
     dotenv (3.2.0)
     drb (2.2.3)
     ed25519 (1.4.0)
@@ -152,7 +154,6 @@ GEM
     marcel (1.1.0)
     matrix (0.4.3)
     mini_mime (1.1.5)
-    mini_portile2 (2.8.9)
     minitest (5.27.0)
     msgpack (1.8.0)
     net-imap (0.6.4)
@@ -170,9 +171,6 @@ GEM
       net-protocol
     net-ssh (7.3.2)
     nio4r (2.7.5)
-    nokogiri (1.19.3)
-      mini_portile2 (~> 2.8.2)
-      racc (~> 1.4)
     nokogiri (1.19.3-aarch64-linux-gnu)
       racc (~> 1.4)
     nokogiri (1.19.3-aarch64-linux-musl)
@@ -316,8 +314,6 @@ GEM
     sqlite3 (2.9.4-arm-linux-gnu)
     sqlite3 (2.9.4-arm-linux-musl)
     sqlite3 (2.9.4-arm64-darwin)
-    sqlite3 (2.9.4-x86-linux-gnu)
-    sqlite3 (2.9.4-x86-linux-musl)
     sqlite3 (2.9.4-x86_64-darwin)
     sqlite3 (2.9.4-x86_64-linux-gnu)
     sqlite3 (2.9.4-x86_64-linux-musl)
@@ -334,7 +330,6 @@ GEM
     tailwindcss-rails (3.3.2)
       railties (>= 7.0.0)
       tailwindcss-ruby (~> 3.0)
-    tailwindcss-ruby (3.4.19)
     tailwindcss-ruby (3.4.19-aarch64-linux)
     tailwindcss-ruby (3.4.19-arm-linux)
     tailwindcss-ruby (3.4.19-arm64-darwin)
@@ -379,9 +374,6 @@ PLATFORMS
   arm-linux-gnu
   arm-linux-musl
   arm64-darwin
-  x86-linux
-  x86-linux-gnu
-  x86-linux-musl
   x86_64-darwin
   x86_64-linux
   x86_64-linux-gnu
@@ -392,6 +384,7 @@ DEPENDENCIES
   brakeman
   capybara
   debug
+  dockerfile-rails (>= 1.6)
   importmap-rails
   kamal
   minitest (~> 5.0)
