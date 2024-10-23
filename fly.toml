@@ -1,0 +1,46 @@
+# fly.toml app configuration file generated for hotboard on 2024-10-16T21:57:01+02:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'hotboard'
+primary_region = 'ams'
+console_command = '/rails/bin/rails console'
+
+[build]
+
+[env]
+  HTTP_PORT = '8080'
+  SOLID_QUEUE_IN_PUMA=true
+
+[[mounts]]
+  source = 'storage'
+  destination = '/storage'
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = 'stop'
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ['app']
+
+[checks]
+  [checks.status]
+    port = 8080
+    type = 'http'
+    interval = '10s'
+    timeout = '2s'
+    grace_period = '5s'
+    method = 'GET'
+    path = '/up'
+    protocol = 'http'
+    tls_skip_verify = false
+
+    [checks.status.headers]
+      X-Forwarded-Proto = 'https'
+
+[[vm]]
+  memory = '512mb'
+  cpu_kind = 'shared'
+  cpus = 1
