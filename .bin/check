@@ -1,0 +1,1 @@
+git rebase --quiet --exec .bin/check_commit.rb initial
