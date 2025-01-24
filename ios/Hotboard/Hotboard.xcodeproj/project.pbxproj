@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		CD193A192D4394F900112F42 /* HotwireNative in Frameworks */ = {isa = PBXBuildFile; productRef = CD193A182D4394F900112F42 /* HotwireNative */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		CD1939FF2D43906400112F42 /* Hotboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hotboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -36,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD193A192D4394F900112F42 /* HotwireNative in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +83,7 @@
 			);
 			name = Hotboard;
 			packageProductDependencies = (
+				CD193A182D4394F900112F42 /* HotwireNative */,
 			);
 			productName = Hotboard;
 			productReference = CD1939FF2D43906400112F42 /* Hotboard.app */;
@@ -107,6 +113,9 @@
 			);
 			mainGroup = CD1939F62D43906400112F42;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				CD193A172D4394F900112F42 /* XCRemoteSwiftPackageReference "hotwire-native-ios" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = CD193A002D43906400112F42 /* Products */;
 			projectDirPath = "";
@@ -335,6 +344,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CD193A172D4394F900112F42 /* XCRemoteSwiftPackageReference "hotwire-native-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hotwired/hotwire-native-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CD193A182D4394F900112F42 /* HotwireNative */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CD193A172D4394F900112F42 /* XCRemoteSwiftPackageReference "hotwire-native-ios" */;
+			productName = HotwireNative;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CD1939F72D43906400112F42 /* Project object */;
 }
