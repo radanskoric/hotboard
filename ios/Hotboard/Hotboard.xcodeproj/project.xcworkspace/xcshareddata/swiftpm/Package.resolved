@@ -1,0 +1,15 @@
+{
+  "originHash" : "e043e35d89fc9c175f4169f4aa9709becdfb87b915ef76ee944456cb593c96b1",
+  "pins" : [
+    {
+      "identity" : "hotwire-native-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/hotwired/hotwire-native-ios",
+      "state" : {
+        "revision" : "c466d3350fab1356de9385ec14961d95039b8409",
+        "version" : "1.2.1"
+      }
+    }
+  ],
+  "version" : 3
+}
