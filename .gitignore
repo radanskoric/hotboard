@@ -35,3 +35,9 @@
 
 /app/assets/builds/*
 !/app/assets/builds/.keep
+
+# MacOS files
+.DS_Store
+
+# User specific X-code files
+/ios/Hotboard/Hotboard.xcodeproj/project.xcworkspace/xcuserdata
