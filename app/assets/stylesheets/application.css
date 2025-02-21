@@ -8,3 +8,7 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+html.hotwire-native h1 {
+  display: none;
+}
