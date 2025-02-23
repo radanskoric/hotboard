@@ -14,6 +14,13 @@ Rails.application.routes.draw do
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
+  resources :configurations, only: [] do
+    collection do
+      get :ios_v1
+      get :android_v1
+    end
+  end
+
   # Defines the root path route ("/")
   root "tickets#index"
 end
