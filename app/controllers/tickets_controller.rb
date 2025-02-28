@@ -27,7 +27,9 @@ class TicketsController < ApplicationController
     if @ticket.save
       flash.notice = "Ticket was successfully created."
       respond_to do |format|
-        format.turbo_stream
+        format.turbo_stream do
+          redirect_to root_path if hotwire_native_app?
+        end
         format.html { redirect_to @ticket }
       end
     else
