@@ -38,7 +38,10 @@ class TicketsController < ApplicationController
   # PATCH/PUT /tickets/1
   def update
     if @ticket.update(ticket_params)
-      redirect_to @ticket, notice: "Ticket was successfully updated.", status: :see_other
+      redirect_target = hotwire_native_app? ? root_path : @ticket
+      redirect_to redirect_target,
+        notice: "Ticket was successfully updated.",
+        status: :see_other
     else
       render :edit, status: :unprocessable_entity
     end
