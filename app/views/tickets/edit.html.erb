@@ -1,7 +1,7 @@
 <div class="mx-auto md:w-2/3 w-full">
   <h1 class="font-bold text-4xl">Editing ticket</h1>
 
-  <%= turbo_frame_tag @ticket do %>
+  <%= turbo_frame_tag @ticket, target: ("_top" if hotwire_native_app?) do %>
     <div data-turbo-permanent id="<%= dom_id @ticket, :wrapper %>" class="ticket-card">
       <%= render "form", ticket: @ticket %>
 
