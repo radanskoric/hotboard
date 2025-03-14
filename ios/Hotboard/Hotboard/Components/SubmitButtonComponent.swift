@@ -18,7 +18,10 @@ final class SubmitButtonComponent: BridgeComponent {
         using data: MessageData,
         to viewController: UIViewController
     ) {
-        let item = UIBarButtonItem(title: data.title)
+        let action = UIAction { [unowned self] _ in
+            self.reply(to: "connect")
+        }
+        let item = UIBarButtonItem(title: data.title, primaryAction: action)
         viewController.navigationItem.rightBarButtonItem = item
     }
 }
