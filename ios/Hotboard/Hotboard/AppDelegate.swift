@@ -12,7 +12,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Hotwire.loadPathConfiguration(from: [
             .server(baseURL.appending(path: "configurations/ios_v1.json"))
         ])
-        
+        Hotwire.registerBridgeComponents([
+            SubmitButtonComponent.self
+        ])
+
         return true
     }
 }
