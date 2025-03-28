@@ -4,6 +4,7 @@ import android.util.Log
 import android.view.Gravity
 import android.view.ViewGroup
 import androidx.appcompat.widget.Toolbar
+import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.ui.platform.ComposeView
 import dev.hotwire.core.bridge.BridgeComponent
@@ -43,7 +44,11 @@ class SubmitButtonComponent(
         val button = ComposeView(fragment.requireContext()).apply {
             id = buttonId
             setContent {
-                Text(data.title)
+                Button(
+                    onClick = { replyTo("connect") }
+                ) {
+                    Text(data.title)
+                }
             }
         }
         // Create a layout that will put the button on
