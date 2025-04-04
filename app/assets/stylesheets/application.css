@@ -12,3 +12,12 @@
 html.hotwire-native h1 {
   display: none;
 }
+
+[data-bridge-components~="submit-button"]
+[data-controller~="bridge--submit-button"] {
+  display: none;
+}
+
+html.hotwire-native .hide-on-native {
+  display: none;
+}
