@@ -18,6 +18,7 @@ class SubmitButtonComponent(
     name: String,
     private val bridgeDelegate: BridgeDelegate<HotwireDestination>
 ) : BridgeComponent<HotwireDestination>(name, bridgeDelegate) {
+    private val buttonId = 1
     private val fragment: HotwireFragment
         get() = bridgeDelegate.destination.fragment as HotwireFragment
 
@@ -25,6 +26,7 @@ class SubmitButtonComponent(
         // Handle incoming messages based on the message `event`.
         when (message.event) {
             "connect" -> addButton(message)
+            "disconnect" -> removeButton()
             else -> Log.w(
                 "ButtonComponent",
                 "Unknown event for message: $message"
@@ -39,6 +41,7 @@ class SubmitButtonComponent(
 
         // Create the view which will render the button
         val button = ComposeView(fragment.requireContext()).apply {
+            id = buttonId
             setContent {
                 Text(data.title)
             }
@@ -54,6 +57,12 @@ class SubmitButtonComponent(
         val toolbar = fragment.toolbarForNavigation()
         // Add the new button
         toolbar?.addView(button, layoutParams)
+    }
+
+    private fun removeButton() {
+        val toolbar = fragment.toolbarForNavigation()
+        val button = toolbar?.findViewById<ComposeView>(buttonId)
+        toolbar?.removeView(button)
     }
 
     // Use kotlinx.serialization annotations to define a serializable
