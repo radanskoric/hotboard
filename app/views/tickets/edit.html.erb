@@ -5,7 +5,7 @@
     <div data-turbo-permanent id="<%= dom_id @ticket, :wrapper %>" class="ticket-card">
       <%= render "form", ticket: @ticket %>
 
-      <%= link_to "Show this ticket", @ticket, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+      <%= link_to "Cancel", @ticket, data: {controller: "bridge--cancel-button"}, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     </div>
   <% end %>
   <%= link_to "Back to tickets", tickets_path, class: "hide-on-native ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
