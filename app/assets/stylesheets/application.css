@@ -14,7 +14,9 @@ html.hotwire-native h1 {
 }
 
 [data-bridge-components~="submit-button"]
-[data-controller~="bridge--submit-button"] {
+[data-controller~="bridge--submit-button"],
+[data-bridge-components~="cancel-button"]
+[data-controller~="bridge--cancel-button"] {
   display: none;
 }
 
