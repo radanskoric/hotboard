@@ -8,6 +8,7 @@
       <%= render "form", ticket: @ticket %>
 
       <button data-action="click->form#remove"
+              data-controller="bridge--cancel-button"
               class="mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium">
         Cancel
       </button>
