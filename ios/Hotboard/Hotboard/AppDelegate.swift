@@ -13,7 +13,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             .server(rootURL.appending(path: "configurations/ios_v1.json"))
         ])
         Hotwire.registerBridgeComponents([
-            SubmitButtonComponent.self
+            SubmitButtonComponent.self,
+            CancelButtonComponent.self
         ])
 
         return true
