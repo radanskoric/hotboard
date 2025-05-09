@@ -20,7 +20,19 @@ android {
     }
 
     buildTypes {
+        debug {
+            buildConfigField(
+                type = "String",
+                name = "BASE_URL",
+                value = "\"http://10.0.2.2:3000/\""
+            )
+        }
         release {
+            buildConfigField(
+                type = "String",
+                name = "BASE_URL",
+                value = "\"https://hotboard.masterhotwire.com/\""
+            )
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -37,6 +49,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 }
 
