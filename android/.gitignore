@@ -13,3 +13,8 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+# Release build related files, assuming the keystore file is named keystore
+keystore
+.kotlin
+app/release
