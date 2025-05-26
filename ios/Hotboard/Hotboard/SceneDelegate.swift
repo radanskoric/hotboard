@@ -1,7 +1,11 @@
 import HotwireNative
 import UIKit
 
+#if DEBUG
 let rootURL = URL(string: "http://localhost:3000/")!
+#else
+let rootURL = URL(string: "https://hotboard.masterhotwire.com/")!
+#endif
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
