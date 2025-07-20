@@ -26,9 +26,21 @@
     <%= content_for :head %>
   </head>
 
-  <body>
-    <main class="container mx-auto mt-2 px-5 flex">
+  <body class="min-h-screen flex flex-col">
+    <main class="container mx-auto mt-2 px-5 flex-grow">
       <%= yield %>
     </main>
+
+    <footer class="hide-on-native container mx-auto px-5 mt-5 mb-4 border-t pt-2 text-center">
+      Built with
+      <a href="https://hotwire.dev" class="text-indigo-600">Hotwire</a>
+      by
+      <a href="https://radanskoric.com" class="text-indigo-600">Radan Skorić</a>
+      as a demo application for <a href="https://masterhotwire.com" class="text-indigo-600">Master Hotwire</a>
+      |
+      <%= link_to "Privacy policy", privacy_path, class: "text-indigo-600" %>
+      |
+      <%= link_to "Source code", "https://github.com/radanskoric/hotboard", class: "text-indigo-600" %>
+    </footer>
   </body>
 </html>
